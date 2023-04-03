@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Weather Dashboard</title>
-
+  </head>
     <body>
       <div class="container-fluid">
         <header class="col-12">
@@ -18,28 +18,41 @@
         </header>
       </div>
 
-
-      <div class = "row">
-        <form class="form-inline mr-auto col-2">
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Enter City Here"
-            aria-label="Search"/>
-          <button
-            class="btn btn-outline-success btn-rounded btn-sm my-0"
-            type="submit">
-            Search
-          </button>
-        </form>  
-      </div>
-        <div class="row jumbotron jumbotron-fluid">
-            <div class="container">
-              <h2 class="display-4">Fluid jumbotron</h2>
-              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      <div class="row">
+        <div class="col-3" id="searchResults">
+            <div class = "row">
+                <form class="form-inline mr-auto">
+                  <input
+                    class="form-control mr-sm-2" type="text" placeholder="Enter City Here" aria-label="Search"/>
+                  <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Search</button>
+                </form>  
             </div>
-          </div>
-      </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <ul id="searchHistory" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="currentWeather" class="col-9">
+            <div class="row pb-3 mr-2 ml-2">
+                <div id="cityDetail" class="col-12 border rounded px-3 py-3"></div>
+            </div>
+
+            <div class="row pb-2 pt-1">
+                <div class="col-12 ml-2"><h3>5-Day Forecast:</h3></div>
+            </div>
+            <div id="fiveDay" class="row pl-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     </body>
-  </head>
+<script src="script.js"></script>
 </html>
+
+
+ 
