@@ -19,8 +19,6 @@ $(document).ready(function () {
   });
 });
 
-// console.log(lat)
-// console.log(lon)
 
 function getCoords() {
   var coordUrl =
@@ -118,9 +116,6 @@ function getWeather() {
       currentHumidity.text(`Humidity: ${currentCityHumidity}%`);
       currentConditions.append(currentHumidity);
     });
-}
-getWeather();
-
 
   var fiveDayForecastHeader = $("#five-day-header");
   var fiveDayHeader = $("<h2>");
@@ -129,7 +124,7 @@ getWeather();
   
   var fiveDayForecastEl = $("#five-day")
 
-  function fiveDayForecast() {
+
 
   var fiveDayUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -148,7 +143,7 @@ getWeather();
     })
 
     .then(function (data) {
-      for (var i = 1; i <= 5; i++) 
+      for (var i = 1; i <= 5; i++) {
       var dateFive;
       var tempFive;
       var iconFive;
@@ -165,10 +160,10 @@ getWeather();
       windFive = data.list[i].wind.speed;
       humidityFive = data.list[i].main.humidity;
 
-      // console.log(tempFive);
-      // console.log(iconFive);
-      // console.log(windFive);
-      // console.log(humidityFive);
+      console.log(tempFive);
+      console.log(iconFive);
+      console.log(windFive);
+      console.log(humidityFive);
 
       var card = document.createElement("div");
       card.classList.add("card", "col-2");
@@ -184,9 +179,11 @@ getWeather();
 
       card.appendChild(cardBody);
       fiveDayForecastEl.append(card);
-    });
+  }});
 
 }
-fiveDayForecast();
 
-// searchBtn.addEventListener('click', citySearch);
+getWeather();
+
+
+searchBtn.addEventListener('click', getWeather);
