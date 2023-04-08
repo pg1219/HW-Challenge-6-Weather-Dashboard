@@ -21,34 +21,25 @@
       <div class="row">
         <div class="col-3" ">
             <div class = "row">
-                <form class="form-inline mr-auto">
-                  <input id = "search-input"
-                    class="form-control mr-sm-2" type="text" placeholder="Enter City Here"/>
+                  <input id = "city-input" class="form-control mr-sm-2" type="text" placeholder="Enter City Here"/>
                   <button id="search-btn" class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit" >Search</button></form>
-                </form>  
             </div>
 
             <div class="row">
                 <div class="col-3">
-                    <ul id="searchHistory" class="list-group"></ul>
+                    <ul id="search-history" class="list-group"></ul>
                 </div>
             </div>
         </div>
 
-        <div class="col-9">
-            <div class="row pb-3 mr-2 ml-2">
-                <div id="cityDetail" class="col-12 border rounded px-3 py-3"></div>
-            </div>
+        <div class="col-8">
 
-                <div class="row col-12 ml-2"><h3>5-Day Forecast:</h3></div>
-            </div>
-            <div id="fiveDay" class="row pl-2">
+                <div id="current-conditions" class="col-12 border rounded px-3 py-3"></div>
+          
+            <div id="five-day" class="row pl-2">
             </div>
         </div>
-    </div>
-</div>
-
-    
+    </div>    
     </body>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
