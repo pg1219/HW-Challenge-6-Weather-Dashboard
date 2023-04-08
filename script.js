@@ -7,6 +7,16 @@ var lat = localStorage.getItem("lat")
 var lon = localStorage.getItem("lon")
 var date = localStorage.getItem("date")
 
+
+$(document).ready(function(){
+    // Get value on button click and show alert
+    $("#search-btn").click(function(){
+        var city = $("#city-input").val();
+        alert(city);
+    });
+});
+
+
 // console.log(lat)
 // console.log(lon)
 
@@ -75,7 +85,7 @@ function getWeather(){
 
       var currentCityTemp = data.current.temp;
       var currentTempEl = $('<p>')
-      currentTempEl.text(`Temp: ${currentCityTemp}°f`)
+      currentTempEl.text(`Temp: ${currentCityTemp}°F`)
       currentConditionsEl.append(currentTempEl);        
         
       var currentCityWind = data.current.wind_speed;
