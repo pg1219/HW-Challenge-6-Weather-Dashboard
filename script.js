@@ -17,38 +17,40 @@ var wind = localStorage.getItem("wind");
     localStorage.setItem("city", city);
   })});
 
-function getCoords() {
   
-  var coordUrl =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-    currentCity +
-    "&appid=" +
-    APIKey;
+  function getWeather() {
+    
+    function getCoords() {
+      
+      var coordUrl =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        currentCity +
+        "&appid=" +
+        APIKey;
+    
+      console.log(coordUrl);
+    
+      fetch(coordUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          var cityData = {
+            lon: data.coord.lon,
+            lat: data.coord.lat,
+            date: data.dt,
+          };
+    
+          localStorage.setItem("lon", data.coord.lon);
+          localStorage.setItem("lat", data.coord.lat);
+          localStorage.setItem("date", data.dt);
+    
+          console.log(cityData);
+        });}
+    
+    getCoords();
 
-  console.log(coordUrl);
-
-  fetch(coordUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      var cityData = {
-        lon: data.coord.lon,
-        lat: data.coord.lat,
-        date: data.dt,
-      };
-
-      localStorage.setItem("lon", data.coord.lon);
-      localStorage.setItem("lat", data.coord.lat);
-      localStorage.setItem("date", data.dt);
-
-      console.log(cityData);
-    });}
-
-getCoords();
-
-function getWeather() {
-  var requestUrl =
+    var requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?lat=" +
     lat +
     "&lon=" +
@@ -56,12 +58,12 @@ function getWeather() {
     "&appid=" +
     APIKey +
     "&units=imperial";
-
+    
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
-
+    
     .then(function (data) {
       var conditions = {
         icon: data.weather[0].icon,
@@ -148,7 +150,7 @@ function getWeather() {
       var windFive;
       var humidityFive;
 
-      dateFive = data[i].dt;
+      dateFive = data.dt;
       dateFive = dayjs.unix(dateFive).format("MM/DD/YYYY");
 
       console.log(dateFive);
