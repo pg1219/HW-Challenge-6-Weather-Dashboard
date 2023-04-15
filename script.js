@@ -11,16 +11,14 @@ var temp = localStorage.getItem("temp");
 var humidity = localStorage.getItem("humidity");
 var wind = localStorage.getItem("wind");
 
-// store search value
-$(document).ready(function () {
+ $(document).ready(function () {
   $("#search-btn").click(function () {
     var city = $("#city-input").val();
     localStorage.setItem("city", city);
-  });
-});
-
+  })});
 
 function getCoords() {
+  
   var coordUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     currentCity +
@@ -35,7 +33,6 @@ function getCoords() {
     })
     .then(function (data) {
       var cityData = {
-        city: currentCity,
         lon: data.coord.lon,
         lat: data.coord.lat,
         date: data.dt,
@@ -46,8 +43,8 @@ function getCoords() {
       localStorage.setItem("date", data.dt);
 
       console.log(cityData);
-    });
-}
+    });}
+
 getCoords();
 
 function getWeather() {
@@ -73,6 +70,7 @@ function getWeather() {
         wind: data.wind.speed,
       };
 
+      localStorage.setItem("city details", JSON.stringify(conditions) )
       localStorage.setItem("icon", data.weather[0].icon);
       localStorage.setItem("temp", data.main.temp);
       localStorage.setItem("humidity", data.main.humidity);
@@ -103,17 +101,17 @@ function getWeather() {
 
       var currentCityTemp = temp;
       var currentTemp = $("<p>");
-      currentTemp.text(`Temp: ${currentCityTemp}°F`);
+      currentTemp.text("Temp: " +  currentCityTemp + "°F");
       currentConditions.append(currentTemp);
 
       var currentCityWind = wind;
       var currentWind = $("<p>");
-      currentWind.text(`Wind: ${currentCityWind} MPH`);
+      currentWind.text("Wind: " + currentCityWind +  " MPH");
       currentConditions.append(currentWind);
 
       var currentCityHumidity = humidity;
       var currentHumidity = $("<p>");
-      currentHumidity.text(`Humidity: ${currentCityHumidity}%`);
+      currentHumidity.text("Humidity: " + currentCityHumidity + "%"); 
       currentConditions.append(currentHumidity);
     });
 
@@ -127,7 +125,7 @@ function getWeather() {
 
 
   var fiveDayUrl =
-    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    "https://api.openweathermap.org/data/2.5/weather?lat=" +
     lat +
     "&lon=" +
     lon +
@@ -150,15 +148,15 @@ function getWeather() {
       var windFive;
       var humidityFive;
 
-      dateFive = data.list[i].dt;
+      dateFive = data[i].dt;
       dateFive = dayjs.unix(dateFive).format("MM/DD/YYYY");
 
       console.log(dateFive);
 
-      tempFive = data.list[i].main.temp;
-      iconFive = data.list[i].weather[0].icon;
-      windFive = data.list[i].wind.speed;
-      humidityFive = data.list[i].main.humidity;
+      tempFive = data.main[i].temp;
+      iconFive = data.weather[i].icon;
+      windFive = data.wind[i].speed;
+      humidityFive = data.main[i].humidity;
 
       console.log(tempFive);
       console.log(iconFive);
@@ -183,7 +181,7 @@ function getWeather() {
 
 }
 
-getWeather();
+getWeather()
 
 
-searchBtn.addEventListener('click', getWeather);
+searchBtn.on('click', getWeather);
