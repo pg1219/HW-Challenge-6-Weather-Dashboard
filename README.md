@@ -24,4 +24,4 @@ Repo: https://github.com/pg1219/HW-Challenge-6-Weather-Dashboard
 
 Preview image of deployed application
 
-![alt](./assets/hw6mockup.png)
+![alt](./hw6mock.png)
