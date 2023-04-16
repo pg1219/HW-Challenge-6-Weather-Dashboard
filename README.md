@@ -8,7 +8,7 @@ Main Objectives:
 
 - Provide user with search bar to search for weather in a specific city
 - When user searches, the city name, date, temperature, wind speed and humidity are presented
-- A 5-day forecast is also presented showing the smae data including an weather icon
+- A 5-day forecast is also presented showing the same data including an weather icon
 - when a city is searched for, it is stored in a search history and the current and future conditions are presented again
 
 
