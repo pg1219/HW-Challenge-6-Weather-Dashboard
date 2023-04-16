@@ -144,7 +144,7 @@ function getWeather() {
     }
   });
 
-  
+
   $(document).ready(function () {
     $("#search-btn").click(function () {
       var city = $("#city-input").val();
@@ -167,10 +167,12 @@ function getWeather() {
       })
       .then(function (data) {
         var cityData = {
+          date: data.dt,
           lon: data.coord.lon,
           lat: data.coord.lat,
         };
   
+        localStorage.setItem("date", data.dt);
         localStorage.setItem("lon", data.coord.lon);
         localStorage.setItem("lat", data.coord.lat);
   
