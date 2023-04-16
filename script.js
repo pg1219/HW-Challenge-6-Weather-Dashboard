@@ -180,8 +180,8 @@ function getWeather() {
       });
   }
   getCoords();
-}
 
+}
 getWeather();
 
 searchBtn.addEventListener("click", getWeather);
